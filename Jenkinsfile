@@ -4,7 +4,9 @@ pipeline {
     stage('build') {
       steps {
         timestamps() {
-          sh './gradlew build '
+          sh 'cp ${jenkinsHome}/scripts/build.sh ./'
+          sh '  sh build.sh $code_env $JOB_NAME $jenkinsHome $JOB_NAME'
+          sh 'rm build.sh'
         }
 
       }
@@ -32,6 +34,6 @@ pipeline {
   environment {
     j_name = 'jenkins_here'
     jenkinsHome = '/data/application/jenkins-new'
-    deploy_gz = ''
+    code_env = 'test'
   }
 }
