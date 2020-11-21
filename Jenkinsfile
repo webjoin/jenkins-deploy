@@ -28,7 +28,7 @@ pipeline {
 
     stage('stop service') {
       steps {
-        sh '      ssh -o StrictHostKeyChecking=no deploy@$deploy_ip "sh /data/application/${prj_name}/service.sh stop"'
+        sh '      ssh -o StrictHostKeyChecking=no deploy@$deploy_ip "sh /data/application/${job_name_new}/service.sh stop"'
       }
     }
 
