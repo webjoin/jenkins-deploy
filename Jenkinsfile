@@ -29,7 +29,7 @@ pipeline {
     stage('stop service') {
       steps {
         sh '      ssh -o StrictHostKeyChecking=no deploy@$deploy_ip "sh /data/application/${job_name_new}/service.sh stop"'
-        sh 'sleep 5;/bin/sh ${jenkinsHome}/scripts/check.sh -r 1 -a $deploy_ip -u  $checkUrl'
+        sh 'sleep 5;/bin/sh ${jenkinsHome}/scripts/check.sh -r 1 -a $deploy_ip -u  http://${deploy_ip}:${deploy_port}${check_path}'
       }
     }
 
@@ -40,7 +40,6 @@ pipeline {
     code_env = 'test'
     job_name_new = 'jenkins-deploy'
     deploy_ip = '10.211.55.3'
-    checkUrl = 'http://$deploy_ip:$deploy_port$check_path'
     check_path = '/actuator/info'
     deploy_port = '10091'
   }
