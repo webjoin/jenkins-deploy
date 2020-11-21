@@ -48,6 +48,6 @@ pipeline {
     job_name_new = 'jenkins-deploy'
     deploy_ip = '10.211.55.3'
     check_path = '/actuator/info'
-    deploy_port = '10091'
+    deploy_port = '8080'
   }
 }
