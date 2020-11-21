@@ -17,7 +17,7 @@ pipeline {
     stage('dispatch') {
       steps {
         sh 'pwd'
-        sh 'sh ${jenkinsHome}/scripts/ndispatch.sh -p jenkins-deploy.tar.gz -i 10.211.55.3 -d /data/application -b /data/appbak -n $ln'
+        sh 'sh ${jenkinsHome}/scripts/ndispatch.sh -p $WORKSPACE/jenkins-deploy.tar.gz -i 10.211.55.3 -d /data/application -b /data/appbak -n $ln'
         echo '$JOB_NAME'
         timestamps() {
           sh 'echo \'hello\''
