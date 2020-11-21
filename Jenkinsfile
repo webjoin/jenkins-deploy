@@ -4,6 +4,7 @@ pipeline {
     stage('build') {
       steps {
         timestamps() {
+          sh 'pwd'
           sh 'echo $JOB_NAME;echo $JOB_BASE_NAME'
           sh 'cp ${jenkinsHome}/scripts/build.sh ./'
           sh '  sh build.sh $code_env $JOB_NAME $jenkinsHome $JOB_NAME'
