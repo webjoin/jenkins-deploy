@@ -33,6 +33,13 @@ pipeline {
       }
     }
 
+    stage('start service') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no deploy@$deploy_ip "sh /data/application/${job_name_new}/service.sh start $code_env "'
+        sh 'sleep 5;/bin/sh ${jenkinsHome}/scripts/check.sh -a ${deploy_ip} -u http://${deploy_ip}:${deploy_port}${check_path} -i 5 -t 120'
+      }
+    }
+
   }
   environment {
     j_name = 'jenkins_here'
