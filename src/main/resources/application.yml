@@ -1,0 +1,10 @@
+
+info:
+  app:
+    name: '${spring.application.name}'
+    address: '${spring.cloud.client.ip-address}:${server.port}'
+    env: ${spring.profiles.active}
+    date: '${app.date}'
+    branch: '${branch}'
+  config:
+    version: '${config.version}'
