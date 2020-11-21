@@ -12,7 +12,8 @@ pipeline {
 
     stage('dispatch') {
       steps {
-        sh '      sh ${jenkinsHome}/scripts/ndispatch.sh -p $deploy_gz -i $deploy_ip -d /data/application -b /data/appbak -n $ln'
+        sh '''      
+pwd;sh ${jenkinsHome}/scripts/ndispatch.sh -p $deploy_gz -i $deploy_ip -d /data/application -b /data/appbak -n $ln'''
       }
     }
 
@@ -25,5 +26,7 @@ pipeline {
   }
   environment {
     j_name = 'jenkins_here'
+    jenkinsHome = '/data/application/jenkins-new'
+    deploy_gz = ''
   }
 }
